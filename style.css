@@ -4,9 +4,20 @@ text-align: center;
 } 
 
 h1{
-    text-align:justify;
+    text-align: justify;
     font-family: "Times New Roman", Times, serif;
 }
+
+h2{
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3{
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .arth{
 width: 60%;
 text-align: center;
@@ -16,3 +27,4 @@ text-align: center;
 width: 35%;   
 text-align: center;
 }
+
