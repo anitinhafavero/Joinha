@@ -1,5 +1,6 @@
 body{
 background-color:rgb(237, 198, 177);
+text-align: center;
 } 
 
 h1{
@@ -8,8 +9,10 @@ h1{
 }
 .arth{
 width: 60%;
+text-align: center;
 }
 
 .artv{
 width: 35%;   
+text-align: center;
 }
