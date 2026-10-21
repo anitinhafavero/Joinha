@@ -1,33 +1,485 @@
-body{
-background-color:rgb(237, 198, 177);
-text-align: justify;
-} 
 
-h1{
-    text-align: center;
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo: rgb(237, 198, 177);
+    --creme: #fff1df;
+    --marrom: #633f35;
+    --escuro: #402b29;
+    --dourado: #d5a66b;
+    --borda: #95634d;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--escuro);
     font-family: "Times New Roman", Times, serif;
+    text-align: justify;
+    line-height: 1.7;
 }
 
-h2{
+h1, h2, h3 {
+    font-family: "Times New Roman", Times, serif;
+    color: var(--escuro);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+h2 {
+    font-size: 1.7rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    overflow-wrap: anywhere;
+}
+
+/* ===== CABEÇALHO HORIZONTAL ===== */
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 18px 5%;
+    background-color: var(--escuro);
+    border-bottom: 5px solid var(--dourado);
+}
+
+.logo {
+    color: var(--creme);
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.menu a {
+    padding: 9px 12px;
+    color: var(--creme);
+    border: 2px solid transparent;
+    font-family: monospace;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: var(--escuro);
+    background-color: var(--dourado);
+    border-color: var(--creme);
+}
+
+/* ===== TÍTULO E INTRODUÇÃO ===== */
+
+.inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    max-width: 1250px;
+    margin: 35px auto;
+    padding: 25px;
+}
+
+.introducao-titulo {
+    flex: 1;
+    min-width: 250px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
 }
 
-h3{
+.introducao-titulo h1 {
+    margin: 0 0 10px;
+    color: var(--marrom);
+    text-shadow: 2px 2px 0 var(--dourado);
+}
+
+.introducao-titulo h2 {
+    margin: 8px 0;
+}
+
+.introducao-titulo h3 {
+    font-size: 1.05rem;
+}
+
+.introducao-texto {
+    flex: 1.3;
+    min-width: 250px;
+    padding: 20px;
+    background-color: rgba(255, 241, 223, 0.55);
+    border-left: 5px solid var(--marrom);
+}
+
+.introducao-texto p {
+    margin: 0;
+    line-height: 1.9;
+}
+
+/* ===== TÍTULO DAS SEÇÕES ===== */
+
+.titulo-secao {
+    padding: 15px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
 }
 
-.arth{
-width: 60%;
-text-align: center;
+.titulo-secao h2 {
+    margin: 5px;
+    font-size: 2rem;
 }
 
-.artv{
-width: 35%;   
-text-align: center;
+.etiqueta {
+    color: var(--marrom);
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.list{
-  text-align: justify;
+/* ===== GALERIA HORIZONTAL ===== */
+
+.secao-obras {
+    width: 100%;
+    padding: 20px 0 35px;
+}
+
+.carrossel {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    padding: 15px max(5%, calc((100% - 950px) / 2)) 30px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Cada cartão ocupa a maior parte da área visível */
+
+.obra {
+    flex: 0 0 85%;
+    max-width: 950px;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    scroll-snap-align: center;
+
+    background-color: var(--creme);
+    border: 4px solid var(--marrom);
+    box-shadow: 6px 6px 0 rgba(64, 43, 41, 0.15);
+}
+
+/* Imagem centralizada na parte superior do cartão */
+
+.imagem-obra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #ead7c3;
+    border-bottom: 3px solid var(--borda);
+}
+
+.imagem-obra img {
+    display: block;
+    width: 100%;
+    height: 390px;
+    object-fit: contain;
+}
+
+/* Informações abaixo da pintura */
+
+.informacoes-obra {
+    padding: 25px 30px;
+    text-align: justify;
+}
+
+.numero-obra {
+    color: var(--borda);
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.informacoes-obra h3 {
+    margin: 8px 0 15px;
+    color: var(--marrom);
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.informacoes-obra p {
+    line-height: 1.9;
+}
+
+.informacoes-obra .artista {
+    margin-bottom: 0;
+    color: var(--marrom);
+    font-weight: bold;
+}
+
+/* Barra de rolagem do carrossel */
+
+.carrossel::-webkit-scrollbar {
+    height: 12px;
+}
+
+.carrossel::-webkit-scrollbar-track {
+    background-color: #d9ad94;
+    border: 2px solid var(--fundo);
+}
+
+.carrossel::-webkit-scrollbar-thumb {
+    background-color: var(--marrom);
+    border: 2px solid var(--fundo);
+}
+
+.carrossel {
+    scrollbar-color: var(--marrom) #d9ad94;
+    scrollbar-width: auto;
+}
+
+.instrucao-carrossel {
+    margin: 0 auto;
+    padding: 10px;
+    color: var(--marrom);
+    font-family: monospace;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* ===== TRÊS COLUNAS INFERIORES ===== */
+
+.painel-inferior {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 20px;
+
+    max-width: 1400px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.coluna {
+    min-width: 0;
+    padding: 20px;
+    background-color: rgba(255, 241, 223, 0.7);
+    border: 3px solid var(--borda);
+}
+
+.coluna h2 {
+    margin-top: 0;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--dourado);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.coluna h3 {
+    color: var(--marrom);
+}
+
+.item-coluna {
+    margin: 15px 0;
+    padding: 12px;
+    background-color: rgba(237, 198, 177, 0.5);
+    border-left: 3px solid var(--borda);
+}
+
+.item-coluna h3 {
+    margin-top: 0;
+}
+
+.item-coluna p {
+    margin-bottom: 0;
+}
+
+/* Lista de diferenças */
+
+.list {
+    padding-left: 22px;
+    text-align: left;
+}
+
+.list li {
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+/* ===== BOTÕES DOS MUSEUS ===== */
+
+.botao-museu {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px 8px;
+
+    color: var(--creme);
+    background-color: var(--escuro);
+    border: 3px solid var(--marrom);
+
+    font-family: monospace;
+    font-size: 0.8rem;
+    text-align: center;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.botao-museu:hover {
+    color: var(--escuro);
+    background-color: var(--dourado);
+    border-color: var(--creme);
+    transform: translateY(-2px);
+}
+
+/* ===== RODAPÉ ===== */
+
+.rodape {
+    padding: 20px;
+    color: var(--creme);
+    background-color: var(--escuro);
+    border-top: 5px solid var(--dourado);
+    text-align: center;
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+a:focus-visible {
+    outline: 3px solid var(--marrom);
+    outline-offset: 4px;
+}
+
+/* ===== TABLETS ===== */
+
+@media (max-width: 900px) {
+    .cabecalho {
+        justify-content: center;
+    }
+
+    .inicio {
+        gap: 20px;
+    }
+
+    .painel-inferior {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .obra {
+        flex-basis: 90%;
+    }
+
+    .imagem-obra img {
+        height: 320px;
+    }
+}
+
+/* ===== CELULARES ===== */
+
+@media (max-width: 600px) {
+    .inicio {
+        flex-direction: column;
+        margin: 15px auto;
+        padding: 18px;
+        gap: 15px;
+    }
+
+    .introducao-titulo,
+    .introducao-texto {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .introducao-texto {
+        padding: 15px;
+    }
+
+    .menu {
+        gap: 4px;
+    }
+
+    .menu a {
+        padding: 7px;
+        font-size: 0.72rem;
+    }
+
+    .obra {
+        flex-basis: 94%;
+    }
+
+    .carrossel {
+        gap: 15px;
+        padding-right: 3%;
+        padding-left: 3%;
+    }
+
+    .imagem-obra {
+        padding: 10px;
+    }
+
+    .imagem-obra img {
+        height: 250px;
+    }
+
+    .informacoes-obra {
+        padding: 18px;
+    }
+
+    .informacoes-obra h3 {
+        font-size: 1.3rem;
+    }
+
+    .painel-inferior {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+}
+
+/* ===== REDUÇÃO DE ANIMAÇÕES ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    html,
+    .carrossel {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
 }
